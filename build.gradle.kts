@@ -37,4 +37,5 @@ dependencies {
     implementation("org.ktorm:ktorm-core:$ktorm_version")
     implementation("org.ktorm:ktorm-support-postgresql:$ktorm_version")
     implementation("org.postgresql:postgresql:$postgresql_driver_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
 }
