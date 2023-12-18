@@ -24,7 +24,7 @@ fun Application.configureUserRoutes() {
         route("/user") {
             val userService = UserService()
             createUser(userService)
-//            getAllBooksRoute(bookService)
+            getAllUsersRoute(userService)
 //            getBookByIdRoute(bookService)
 //            updateBookByIdRoute(bookService)
 //            deleteBookByIdRoute(bookService)
@@ -42,5 +42,14 @@ fun Route.createUser(userService: UserService) {
             call.respond(HttpStatusCode.Created)
         else
             call.respond(HttpStatusCode.BadRequest, ErrorResponse("Cannot create user"))
+    }
+}
+
+fun Route.getAllUsersRoute(userService: UserService) {
+    get {
+        val users = userService.findAllUsers()
+            .map(User::toUserResponse)
+
+        call.respond(message = users)
     }
 }

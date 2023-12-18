@@ -1,12 +1,10 @@
 package com.example.service
 
-import com.example.model.User
-import com.example.model.BookRequest
-import com.example.model.Users
-import com.example.model.UserRequest
+import com.example.model.*
 import org.ktorm.database.Database
 import org.ktorm.entity.add
 import org.ktorm.entity.sequenceOf
+import org.ktorm.entity.toSet
 
 class UserService {
 
@@ -30,5 +28,8 @@ class UserService {
 
         return affectedRecordsNumber == 1
     }
+
+    fun findAllUsers(): Set<User> =
+        database.sequenceOf(Users).toSet()
 
 }

@@ -12,7 +12,7 @@ interface User: Entity<User> {
         var email: String
 //        var created: Instant
     }
-    object Users : Table<User>("user") {
+    object Users : Table<User>("people") {
         val id = long("id").primaryKey().bindTo(User::id)
         val firstname = varchar("firstname").bindTo(User::firstname)
         val lastname = varchar("lastname").bindTo(User::lastname)
