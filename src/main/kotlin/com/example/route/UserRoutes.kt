@@ -25,7 +25,7 @@ fun Application.configureUserRoutes() {
             val userService = UserService()
             createUser(userService)
             getAllUsersRoute(userService)
-//            getBookByIdRoute(bookService)
+            getUserByIdRoute(userService)
 //            updateBookByIdRoute(bookService)
 //            deleteBookByIdRoute(bookService)
         }
@@ -51,5 +51,17 @@ fun Route.getAllUsersRoute(userService: UserService) {
             .map(User::toUserResponse)
 
         call.respond(message = users)
+    }
+}
+
+fun Route.getUserByIdRoute(userService: UserService) {
+    get("/{id}") {
+        val id: Long = call.parameters["id"]?.toLongOrNull()
+            ?: return@get call.respond(HttpStatusCode.BadRequest, ErrorResponse("Invalid id"))
+
+        userService.findUserById(id)
+            ?.let { foundUser -> foundUser.toUserResponse() }
+            ?.let { response -> call.respond(response) }
+            ?: return@get call.respond(HttpStatusCode.BadRequest, ErrorResponse("User with id [$id] not found"))
     }
 }

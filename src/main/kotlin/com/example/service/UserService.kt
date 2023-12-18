@@ -2,7 +2,9 @@ package com.example.service
 
 import com.example.model.*
 import org.ktorm.database.Database
+import org.ktorm.dsl.eq
 import org.ktorm.entity.add
+import org.ktorm.entity.find
 import org.ktorm.entity.sequenceOf
 import org.ktorm.entity.toSet
 
@@ -32,4 +34,7 @@ class UserService {
     fun findAllUsers(): Set<User> =
         database.sequenceOf(Users).toSet()
 
+    fun findUserById(userId: Long): User? =
+        database.sequenceOf(Users)
+            .find { user -> user.id eq userId }
 }
