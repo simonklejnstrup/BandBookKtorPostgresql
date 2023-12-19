@@ -37,4 +37,23 @@ class UserService {
     fun findUserById(userId: Long): User? =
         database.sequenceOf(Users)
             .find { user -> user.id eq userId }
+
+    fun updateUserById(userId: Long, userRequest: UserRequest): Boolean {
+        val foundUser = findUserById(userId)
+        foundUser?.firstname = userRequest.firstname
+        foundUser?.lastname = userRequest.lastname
+        foundUser?.email = userRequest.email
+
+        val affectedRecordsNumber = foundUser?.flushChanges()
+
+        return affectedRecordsNumber == 1
+    }
+
+    fun deleteUserById(userId: Long): Boolean {
+        val foundUser = findUserById(userId)
+
+        val affectedRecordsNumber = foundUser?.delete()
+
+        return affectedRecordsNumber == 1
+    }
 }

@@ -26,8 +26,8 @@ fun Application.configureUserRoutes() {
             createUser(userService)
             getAllUsersRoute(userService)
             getUserByIdRoute(userService)
-//            updateBookByIdRoute(bookService)
-//            deleteBookByIdRoute(bookService)
+            updateUserByIdRoute(userService)
+            deleteUserByIdRoute(userService)
         }
     }
 }
@@ -65,3 +65,33 @@ fun Route.getUserByIdRoute(userService: UserService) {
             ?: return@get call.respond(HttpStatusCode.BadRequest, ErrorResponse("User with id [$id] not found"))
     }
 }
+
+fun Route.updateUserByIdRoute(userService: UserService) {
+    patch("/{id}") {
+        val id: Long = call.parameters["id"]?.toLongOrNull()
+            ?: return@patch call.respond(HttpStatusCode.BadRequest, ErrorResponse("Invalid id"))
+
+        val request = call.receive<UserRequest>()
+        val success = userService.updateUserById(id, request)
+
+        if (success)
+            call.respond(HttpStatusCode.NoContent)
+        else
+            call.respond(HttpStatusCode.BadRequest, ErrorResponse("Cannot update book with id [$id]"))
+    }
+}
+
+fun Route.deleteUserByIdRoute(userService: UserService) {
+    delete("/{id}") {
+        val id: Long = call.parameters["id"]?.toLongOrNull()
+            ?: return@delete call.respond(HttpStatusCode.BadRequest, ErrorResponse("Invalid id"))
+
+        val success = userService.deleteUserById(id)
+
+        if (success)
+            call.respond(HttpStatusCode.NoContent)
+        else
+            call.respond(HttpStatusCode.BadRequest, ErrorResponse("Cannot delete user with id [$id]"))
+    }
+}
+
