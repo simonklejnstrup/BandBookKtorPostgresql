@@ -1,6 +1,6 @@
 package com.example.model
 
-import kotlinx.serialization.Contextual
+import com.example.util.InstantSerializer
 import kotlinx.serialization.Serializable
 import java.time.Instant
 
@@ -10,6 +10,6 @@ data class UserResponse(
     val firstname: String,
     var lastname: String,
     var email: String,
-//    @Contextual
-//    var created: Instant
+    @Serializable(with = InstantSerializer::class)
+    var created: Instant
 )
