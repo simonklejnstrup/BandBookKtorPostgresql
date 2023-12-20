@@ -15,7 +15,7 @@ private fun User?.toUserResponse(): UserResponse? =
         it.firstname,
         it.lastname,
         it.email,
-//        it.created
+        it.created
     )
     }
 

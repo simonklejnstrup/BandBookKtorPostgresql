@@ -22,7 +22,7 @@ class UserService {
             firstname = userRequest.firstname
             lastname = userRequest.lastname
             email = userRequest.email
-//            created = userRequest.created
+
         }
 
         val affectedRecordsNumber =
