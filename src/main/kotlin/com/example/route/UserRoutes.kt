@@ -1,7 +1,9 @@
 package com.example.route
 
 import com.example.model.*
-import com.example.service.BookService
+import com.example.model.user.User
+import com.example.model.user.UserRequest
+import com.example.model.user.UserResponse
 import com.example.service.UserService
 import io.ktor.application.*
 import io.ktor.http.*
@@ -77,7 +79,7 @@ fun Route.updateUserByIdRoute(userService: UserService) {
         if (success)
             call.respond(HttpStatusCode.NoContent)
         else
-            call.respond(HttpStatusCode.BadRequest, ErrorResponse("Cannot update book with id [$id]"))
+            call.respond(HttpStatusCode.BadRequest, ErrorResponse("Cannot update user with id [$id]"))
     }
 }
 
