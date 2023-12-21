@@ -1,4 +1,4 @@
-package com.example.model
+package com.example.model.user
 
 import org.ktorm.entity.Entity
 import org.ktorm.schema.Table
@@ -21,6 +21,4 @@ interface User: Entity<User> {
         val lastname = varchar("lastname").bindTo(User::lastname)
         val email = varchar("email").bindTo(User::email)
         val created = timestamp("created_at").bindTo(User::created)
-
-
 }

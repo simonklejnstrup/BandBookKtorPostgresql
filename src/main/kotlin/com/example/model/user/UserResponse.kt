@@ -1,4 +1,4 @@
-package com.example.model
+package com.example.model.user
 
 import com.example.util.InstantSerializer
 import kotlinx.serialization.Serializable
