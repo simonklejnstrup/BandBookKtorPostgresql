@@ -1,6 +1,8 @@
 package com.example.service
 
-import com.example.model.*
+import com.example.model.user.User
+import com.example.model.user.UserRequest
+import com.example.model.user.Users
 import org.ktorm.database.Database
 import org.ktorm.dsl.eq
 import org.ktorm.entity.add
