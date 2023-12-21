@@ -4,7 +4,6 @@ import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.*
 import java.time.Instant
-import java.time.format.DateTimeFormatter
 
 @Serializer(forClass = Instant::class)
 object InstantSerializer : KSerializer<Instant> {
