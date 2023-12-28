@@ -35,6 +35,9 @@ class EventService {
               nameOfContactPerson = eventRequest.nameOfContactPerson
               telephoneNumberOfContactPerson = eventRequest.telephoneNumberOfContactPerson
               note = eventRequest.note
+              type = eventRequest.type
+              lengthOfEachSet = eventRequest.lengthOfEachSet
+              numberOfSets = eventRequest.numberOfSets
         }
 
         val affectedRecordsNumber =
@@ -65,6 +68,9 @@ class EventService {
         foundEvent?.nameOfContactPerson = eventRequest.nameOfContactPerson
         foundEvent?.telephoneNumberOfContactPerson = eventRequest.telephoneNumberOfContactPerson
         foundEvent?.note = eventRequest.note
+        foundEvent?.type = eventRequest.type
+        foundEvent?.lengthOfEachSet = eventRequest.lengthOfEachSet
+        foundEvent?.numberOfSets = eventRequest.numberOfSets
 
         val affectedRecordsNumber = foundEvent?.flushChanges()
 

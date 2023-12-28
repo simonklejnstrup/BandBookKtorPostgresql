@@ -23,6 +23,9 @@ interface Event : Entity<Event> {
     var nameOfContactPerson: String
     var telephoneNumberOfContactPerson: String
     var note: String
+    var type: String
+    var lengthOfEachSet: Int
+    var numberOfSets: Int
 }
 
 object Events : Table<Event>("event") {
@@ -41,4 +44,7 @@ object Events : Table<Event>("event") {
     val nameOfContactPerson = varchar("name_of_contact_person").bindTo(Event::nameOfContactPerson)
     val telephoneNumberOfContactPerson = varchar("telephone_number_of_contact_person").bindTo(Event::telephoneNumberOfContactPerson)
     val note = text("note").bindTo(Event::note)
+    val type = text("type").bindTo(Event::type)
+    val lengthOfEachSet = int("length_of_each_set").bindTo(Event::lengthOfEachSet)
+    val numberOfSets = int("number_of_sets").bindTo(Event::numberOfSets)
 }

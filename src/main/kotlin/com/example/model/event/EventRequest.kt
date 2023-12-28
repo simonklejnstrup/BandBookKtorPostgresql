@@ -26,5 +26,8 @@ data class EventRequest(
     var extraCosts: Int,
     var nameOfContactPerson: String,
     var telephoneNumberOfContactPerson: String,
-    var note: String
+    var note: String,
+    val type: String,
+    val lengthOfEachSet: Int,
+    val numberOfSets: Int
 )

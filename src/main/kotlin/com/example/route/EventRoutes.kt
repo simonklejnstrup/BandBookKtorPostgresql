@@ -28,7 +28,10 @@ private fun Event?.toEventResponse(): EventResponse? =
             it.extraCosts,
             it.nameOfContactPerson,
             it.telephoneNumberOfContactPerson,
-            it.note
+            it.note,
+            it.type,
+            it.lengthOfEachSet,
+            it.numberOfSets
         )
     }
 

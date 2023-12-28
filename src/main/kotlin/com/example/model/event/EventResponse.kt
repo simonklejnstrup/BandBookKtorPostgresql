@@ -27,5 +27,8 @@ data class EventResponse(
     val extraCosts: Int,
     val nameOfContactPerson: String,
     val telephoneNumberOfContactPerson: String,
-    val note: String
+    val note: String,
+    val type: String,
+    val lengthOfEachSet: Int,
+    val numberOfSets: Int
 )
