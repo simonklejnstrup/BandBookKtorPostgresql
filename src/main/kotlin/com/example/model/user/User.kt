@@ -13,6 +13,7 @@ interface User: Entity<User> {
         var firstname: String
         var lastname: String
         var email: String
+        var band: String
         var created: Instant
     }
     object Users : Table<User>("app_user") {
@@ -20,5 +21,6 @@ interface User: Entity<User> {
         val firstname = varchar("firstname").bindTo(User::firstname)
         val lastname = varchar("lastname").bindTo(User::lastname)
         val email = varchar("email").bindTo(User::email)
+        val band = varchar("band").bindTo(User::band)
         val created = timestamp("created_at").bindTo(User::created)
 }

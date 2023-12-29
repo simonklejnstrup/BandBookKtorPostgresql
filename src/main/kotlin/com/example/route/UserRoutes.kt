@@ -13,11 +13,12 @@ import io.ktor.routing.*
 
 private fun User?.toUserResponse(): UserResponse? =
     this?.let { UserResponse(
-        it.id!!,
-        it.firstname,
-        it.lastname,
-        it.email,
-        it.created
+        id = it.id!!,
+        firstname = it.firstname,
+        lastname = it.lastname,
+        email = it.email,
+        band = it.band,
+        created = it.created
     )
     }
 

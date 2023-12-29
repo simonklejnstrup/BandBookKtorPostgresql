@@ -10,6 +10,7 @@ data class UserResponse(
     val firstname: String,
     var lastname: String,
     var email: String,
+    var band: String,
     @Serializable(with = InstantSerializer::class)
     var created: Instant
 )

@@ -24,7 +24,7 @@ class UserService {
             firstname = userRequest.firstname
             lastname = userRequest.lastname
             email = userRequest.email
-
+            band = userRequest.band
         }
 
         val affectedRecordsNumber =
@@ -45,6 +45,7 @@ class UserService {
         foundUser?.firstname = userRequest.firstname
         foundUser?.lastname = userRequest.lastname
         foundUser?.email = userRequest.email
+        foundUser?.band = userRequest.band
 
         val affectedRecordsNumber = foundUser?.flushChanges()
 
