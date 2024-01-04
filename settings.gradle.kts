@@ -1,1 +1,1 @@
-rootProject.name = "com.sk.ktor-sample"
+rootProject.name = "com.sk.bandbookbackend"
