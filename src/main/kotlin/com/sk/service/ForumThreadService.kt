@@ -10,14 +10,7 @@ import org.ktorm.entity.find
 import org.ktorm.entity.sequenceOf
 import org.ktorm.entity.toSet
 
-class ForumThreadService {
-
-    private val database = Database.connect(
-        url = "jdbc:postgresql://localhost:5438/postgres",
-        driver = "org.postgresql.Driver",
-        user = "postgres",
-        password = "postgres"
-    )
+class ForumThreadService(private val database: Database) {
 
     fun createForumThread(forumThreadRequest: ForumThreadRequest): Boolean {
         val newForumThread = ForumThread {

@@ -5,6 +5,7 @@ import com.sk.model.comment.Comment
 import com.sk.model.comment.CommentRequest
 import com.sk.model.comment.CommentResponse
 import com.sk.service.CommentService
+import com.sk.util.DatabaseFactory
 import com.sk.util.getIdParam
 import io.ktor.application.*
 import io.ktor.http.*
@@ -17,7 +18,7 @@ fun Comment?.toCommentResponse(): CommentResponse? =
         it.id!!,
         it.createdBy,
         it.content,
-        it.createdDate,
+        it.createdAt,
         it.threadId,
     )
     }
@@ -25,7 +26,7 @@ fun Comment?.toCommentResponse(): CommentResponse? =
 fun Application.configureCommentRoutes() {
     routing {
         route("/comment") {
-            val commentService = CommentService()
+            val commentService = CommentService(DatabaseFactory.database)
             createComment(commentService)
             getAllCommentsRoute(commentService)
             getCommentByIdRoute(commentService)

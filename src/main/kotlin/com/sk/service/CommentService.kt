@@ -7,13 +7,7 @@ import org.ktorm.database.Database
 import org.ktorm.dsl.eq
 import org.ktorm.entity.*
 
-class CommentService {
-    private val database = Database.connect(
-        url = "jdbc:postgresql://localhost:5438/postgres",
-        driver = "org.postgresql.Driver",
-        user = "postgres",
-        password = "postgres"
-    )
+class CommentService(private val database: Database) {
 
     fun createComment(commentRequest: CommentRequest): Boolean {
         val newComment = Comment {

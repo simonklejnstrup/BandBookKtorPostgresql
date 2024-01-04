@@ -8,6 +8,7 @@ import com.sk.model.forumthread.ForumThreadResponse
 import com.sk.model.forumthreadwithcomments.ForumThreadWithCommentsResponse
 import com.sk.service.CommentService
 import com.sk.service.ForumThreadService
+import com.sk.util.DatabaseFactory
 import com.sk.util.getIdParam
 import io.ktor.application.*
 import io.ktor.http.*
@@ -20,7 +21,7 @@ private fun ForumThread?.toForumThreadResponse(): ForumThreadResponse? =
         it.id!!,
         it.title,
         it.createdBy,
-        it.createdDate,
+        it.createdAt,
     )
     }
 
@@ -28,7 +29,7 @@ fun Application.configureForumThreadRoutes() {
     routing {
         route("/forumthread") {
             val forumThreadService = ForumThreadService()
-            val commentService = CommentService()
+            val commentService = CommentService(DatabaseFactory.database)
             createForumThread(forumThreadService)
             getAllForumThreadsRoute(forumThreadService)
             getForumThreadByIdRoute(forumThreadService)

@@ -13,12 +13,12 @@ interface ForumThread : Entity<ForumThread> {
     val id: Int
     var title: String
     var createdBy: String
-    var createdDate: Instant
+    var createdAt: Instant
 }
 
 object ForumThreads : Table<ForumThread>("forum_thread") {
     val id = int("id").primaryKey().bindTo { it.id }
     val title = varchar("title").bindTo { it.title }
     val createdBy = varchar("created_by").bindTo { it.createdBy }
-    val createdDate = timestamp("created_date").bindTo { it.createdDate }
+    val createdAt = timestamp("created_at").bindTo { it.createdAt }
 }

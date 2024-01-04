@@ -10,14 +10,7 @@ import org.ktorm.entity.find
 import org.ktorm.entity.sequenceOf
 import org.ktorm.entity.toSet
 
-class EventService {
-
-    private val database = Database.connect(
-        url = "jdbc:postgresql://localhost:5438/postgres",
-        driver = "org.postgresql.Driver",
-        user = "postgres",
-        password = "postgres"
-    )
+class EventService(private val database: Database) {
 
     fun createEvent(eventRequest: EventRequest): Boolean {
         val newEvent = Event {

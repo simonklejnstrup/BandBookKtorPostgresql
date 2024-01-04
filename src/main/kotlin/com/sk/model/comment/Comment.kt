@@ -12,7 +12,7 @@ interface Comment : Entity<Comment> {
     val id: Int
     var content: String
     var createdBy: String
-    var createdDate: Instant
+    var createdAt: Instant
     var threadId: Int
     // Reference to the associated ForumThread entity
     var forumThread: ForumThread
@@ -22,7 +22,7 @@ object Comments : Table<Comment>("comment") {
     val id = int("id").primaryKey().bindTo { it.id }
     val content = text("content").bindTo { it.content }
     val createdBy = varchar("created_by").bindTo { it.createdBy }
-    val createdDate = timestamp("created_date").bindTo { it.createdDate }
+    val createdAt = timestamp("created_at").bindTo { it.createdAt }
     val threadId = int("thread_id").bindTo { it.threadId }
 }
 
