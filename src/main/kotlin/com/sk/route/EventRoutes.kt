@@ -5,6 +5,7 @@ import com.sk.model.event.Event
 import com.sk.model.event.EventRequest
 import com.sk.model.event.EventResponse
 import com.sk.service.EventService
+import com.sk.util.DatabaseFactory
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*
@@ -37,8 +38,8 @@ private fun Event?.toEventResponse(): EventResponse? =
 
 fun Application.configureEventRoutes() {
     routing {
-        route("/event") {
-            val eventService = EventService()
+        route("/api/v1/event") {
+            val eventService = EventService(DatabaseFactory.database)
             createEvent(eventService)
             getAllEventsRoute(eventService)
             getEventByIdRoute(eventService)

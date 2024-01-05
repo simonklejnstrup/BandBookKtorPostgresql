@@ -27,8 +27,8 @@ private fun ForumThread?.toForumThreadResponse(): ForumThreadResponse? =
 
 fun Application.configureForumThreadRoutes() {
     routing {
-        route("/forumthread") {
-            val forumThreadService = ForumThreadService()
+        route("/api/v1/forumthread") {
+            val forumThreadService = ForumThreadService(DatabaseFactory.database)
             val commentService = CommentService(DatabaseFactory.database)
             createForumThread(forumThreadService)
             getAllForumThreadsRoute(forumThreadService)

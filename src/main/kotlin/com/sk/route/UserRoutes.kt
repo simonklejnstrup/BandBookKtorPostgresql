@@ -5,6 +5,7 @@ import com.sk.model.user.User
 import com.sk.model.user.UserRequest
 import com.sk.model.user.UserResponse
 import com.sk.service.UserService
+import com.sk.util.DatabaseFactory
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*
@@ -24,8 +25,8 @@ private fun User?.toUserResponse(): UserResponse? =
 
 fun Application.configureUserRoutes() {
     routing {
-        route("/user") {
-            val userService = UserService()
+        route("/api/v1/user") {
+            val userService = UserService(DatabaseFactory.database)
             createUser(userService)
             getAllUsersRoute(userService)
             getUserByIdRoute(userService)

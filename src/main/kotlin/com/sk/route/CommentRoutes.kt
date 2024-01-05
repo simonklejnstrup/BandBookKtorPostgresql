@@ -25,7 +25,7 @@ fun Comment?.toCommentResponse(): CommentResponse? =
 
 fun Application.configureCommentRoutes() {
     routing {
-        route("/comment") {
+        route("/api/v1/comment") {
             val commentService = CommentService(DatabaseFactory.database)
             createComment(commentService)
             getAllCommentsRoute(commentService)
