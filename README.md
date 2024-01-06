@@ -1,40 +1,85 @@
-# [Your API Name]
+# BandBook REST API
 
-[Short description of what your API does]
+[Privides data for BandBook app]
 
-## Table of Contents
+# Comment API Endpoints
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-  - [Authentication](#authentication)
-  - [Endpoints](#endpoints)
-- [Examples](#examples)
-- [Error Handling](#error-handling)
-- [Rate Limits](#rate-limits)
-- [Response Codes](#response-codes)
-- [Contributing](#contributing)
-- [Versioning](#versioning)
-- [Authors](#authors)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
+## Overview
 
-## Introduction
+This document describes the endpoints of the Comment API in the application. The API allows for creating, retrieving, updating, and deleting comments.
 
-[Provide a more detailed explanation about the API, its purpose, and its potential use cases]
+Base URL: `/api/v1/comment`
 
-## Features
+## Endpoints
 
-[List the features of your API]
+### 1. Create a Comment
 
-## Getting Started
+- **URL**: `/api/v1/comment`
+- **Method**: `POST`
+- **Body**:
+  - `CommentRequest` object
+- **Response**:
+  - `201 Created` on success
+  - `400 BadRequest` with error message on failure
+- **Description**:
+  Creates a new comment based on the provided `CommentRequest` data.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+### 2. Get All Comments
 
-### Prerequisites
+- **URL**: `/api/v1/comment`
+- **Method**: `GET`
+- **Response**:
+  - Array of `CommentResponse` objects
+- **Description**:
+  Retrieves a list of all comments.
 
-What things you need to install the software and how to install them:
+### 3. Get Comment by ID
+
+- **URL**: `/api/v1/comment/{id}`
+- **Method**: `GET`
+- **URL Parameters**:
+  - `id` [Integer]: The ID of the comment to retrieve.
+- **Response**:
+  - `CommentResponse` object on success
+  - `400 BadRequest` with error message on failure
+- **Description**:
+  Retrieves a specific comment by its ID.
+
+### 4. Update Comment by ID
+
+- **URL**: `/api/v1/comment/{id}`
+- **Method**: `PATCH`
+- **URL Parameters**:
+  - `id` [Integer]: The ID of the comment to update.
+- **Body**:
+  - `CommentRequest` object
+- **Response**:
+  - `204 NoContent` on success
+  - `400 BadRequest` with error message on failure
+- **Description**:
+  Updates the content of an existing comment identified by its ID.
+
+### 5. Delete Comment by ID
+
+- **URL**: `/api/v1/comment/{id}`
+- **Method**: `DELETE`
+- **URL Parameters**:
+  - `id` [Integer]: The ID of the comment to delete.
+- **Response**:
+  - `204 NoContent` on successful deletion
+  - `400 BadRequest` with error message on failure
+- **Description**:
+  Deletes a comment identified by its ID.
+
+## Models
+
+### CommentRequest
+
+- Structure of the request body used for creating or updating comments.
+
+### CommentResponse
+
+- Structure of the response returned when fetching comments.
+
+
 
