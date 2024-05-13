@@ -1,6 +1,6 @@
 # BandBook REST API
 
-[Privides data for BandBook app]
+> A REST API to serve the band-management app BandBook
 
 # Comment API Endpoints
 
@@ -71,7 +71,7 @@ Base URL: `/api/v1/comment`
 - **Description**:
   Deletes a comment identified by its ID.
 
-## Models
+
 
 ### CommentRequest
 
